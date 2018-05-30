@@ -29,10 +29,19 @@ function countScore(frames) {
     for (i=0; i<frames.length; i++) {
         ball1 = frames[i][0];
         ball2 = frames[i][1];
-        ball3 = frames[i+1][0];
-        ball4 = frames[i+1][1];
-        ball5 = frames[i+2][0];
 
+        // trying to account for errors with i returning undefined
+        if (!frames[0+1] === undefined) {
+            ball3 = frames[0+1][0];
+            ball4 = frames[0+1][1];
+        }
+        if (!frames[i+2] === undefined) {
+            ball5 = frames[i+2][0];
+        }
+        
+
+
+        
         frameTotal = ball1 + ball2; 
 
         if (frameTotal == 10) {
@@ -49,11 +58,15 @@ function countScore(frames) {
 
         total += frameTotal;
     }
+
+    console.log("hello")
     return total;
 
     // spare = ball 1 + ball 2 + ball 3
     // strike = ball 1 + ball 2 + ball 3 + ball 4
     // doublestrike = ball 1 + ball 2 + ball 3 + ball 4 + ball 5
+
+    // can't deal with doublestrike situation due to it returning undefined from i+2 on the second to last frame,
 }
 
 
